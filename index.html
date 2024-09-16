@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop di Immagini</title>
+    <style>
+        #slideshow {
+            width: 500px; /* Imposta la larghezza desiderata */
+            height: 300px; /* Imposta l'altezza desiderata */
+            overflow: hidden;
+            position: relative;
+        }
+        #slideshow img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+        #slideshow img.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="slideshow">
+        <img src="sprite1.png" class="active">
+        <img src="sprite2.png">
+        <img src="sprite3.png">
+        <img src="sprite4.png">
+        <img src="sprite5.png">
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('#slideshow img');
+        const totalImages = images.length;
+
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % totalImages;
+            images[currentIndex].classList.add('active');
+        }, 100); // Cambia immagine ogni 0.1 secondi
+    </script>
+</body>
+</html>
